@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo ${GIT_TOKEN} | gh auth login --with-token
-gh repo clone devopsport/${GITHUB_REPO}
-cd ${GITHUB_REPO}/
+gh repo clone ${GITHUB_REPOSITORY}
+cd $(echo "${GITHUB_REPOSITORY}" | cut -d "/" -f2)/
 GITHUB_TAGS=$(gh release list)
 
 if [ "$(gh release list | grep Latest | awk '{print $9 " " $2}')" == " Latest" ]
