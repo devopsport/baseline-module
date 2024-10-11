@@ -48,6 +48,6 @@ jobs:
         curl --location --request POST "https://api.getport.io/v1/blueprints/${blueprint_id}/entities?upsert=true" 	--header "Authorization: Bearer $access_token" 	--header "Content-Type: application/json" 	--data-raw '{
           "identifier": "module1",
           "title": "module1",
-          "properties": {"url":"https://example.com","security":"Passed","version":"${versionRelease}","quality":"Passed"},
+          "properties": {"url":"https://example.com","security":"Passed","version":"'${versionRelease}'","quality":"Passed"},
           "relations": {"organization":"icarus"}
         }'
