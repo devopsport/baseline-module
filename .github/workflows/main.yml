@@ -49,5 +49,5 @@ jobs:
           "identifier": "module1",
           "title": "module1",
           "properties": {"url":"https://example.com","security":"Passed","version":"${versionRelease}","quality":"Passed"},
-          "relations": {"organization":"related_entity_identifier"}
+          "relations": {"organization":"icarus"}
         }'
