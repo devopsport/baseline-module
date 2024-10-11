@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ${GIT_TOKEN} | gh auth login --with-token
-gh repo clone punkerside/${GITHUB_REPO}
+gh repo clone devopsport/${GITHUB_REPO}
 cd ${GITHUB_REPO}/
 GITHUB_TAGS=$(gh release list)
 
