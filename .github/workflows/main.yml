@@ -27,6 +27,9 @@ jobs:
       uses: snyk/actions/iac@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: report
+        
 
     - name: Release
       run: ./.github/workflows/release.sh
