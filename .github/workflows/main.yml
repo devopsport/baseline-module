@@ -37,7 +37,7 @@ jobs:
 
     - name: GetPort
       run: |
-        versionRelease=$(cat version.txt)
+        versionRelease=$(cat /tmp/version.txt)
         access_token=$(curl --location --request POST 'https://api.getport.io/v1/auth/access_token' --header 'Content-Type: application/json' --data-raw '{
           "clientId": "5YwA7iVqrguZ2FbGR7wN5Nca6RXJSH4H",
           "clientSecret": "BcyJOu8lcwcQNVzkeYjZPd3KpJAlatJkjVwBKPdsqo1pPzKyeB6kBHHjVJMQ9kfI"
