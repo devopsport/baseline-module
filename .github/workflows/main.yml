@@ -37,6 +37,7 @@ jobs:
 
     - name: GetPort
       run: |
+        moduleName=$(echo ${GITHUB_REPOSITORY} | cut -d "/" -f2)
         versionRelease=$(cat /tmp/version.txt)
         access_token=$(curl --location --request POST 'https://api.getport.io/v1/auth/access_token' --header 'Content-Type: application/json' --data-raw '{
           "clientId": "5YwA7iVqrguZ2FbGR7wN5Nca6RXJSH4H",
@@ -46,8 +47,8 @@ jobs:
         blueprint_id='module_repository'
 
         curl --location --request POST "https://api.getport.io/v1/blueprints/${blueprint_id}/entities?upsert=true" 	--header "Authorization: Bearer $access_token" 	--header "Content-Type: application/json" 	--data-raw '{
-          "identifier": "module1",
-          "title": "module1",
-          "properties": {"url":"https://example.com","security":"Passed","version":"'${versionRelease}'","quality":"Passed"},
+          "identifier": "'${moduleName}'",
+          "title": "'${moduleName}'",
+          "properties": {"url":"https://github.com/devopsport/'${moduleName}'","security":"Passed","version":"'${versionRelease}'","quality":"Passed"},
           "relations": {"organization":"icarus"}
         }'
