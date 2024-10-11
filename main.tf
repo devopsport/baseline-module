@@ -29,17 +29,3 @@ resource "aws_vpc_security_group_egress_rule" "main" {
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1"
 }
-
-resource "aws_lb" "main" {
-  name               = "test-lb-tf"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.main.id]
-  subnets            = [for subnet in aws_subnet.public : subnet.id]
-
-  enable_deletion_protection = false
-
-  tags = {
-    Environment = "production"
-  }
-}
