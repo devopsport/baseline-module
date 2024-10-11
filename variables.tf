@@ -1,11 +1,14 @@
 variable "project" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "env" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "service" {
-  type = string
+  type    = string
+  default = null
 }
