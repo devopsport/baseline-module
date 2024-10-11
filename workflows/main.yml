@@ -5,10 +5,6 @@ on:
     branches:
       - main
 
-env:
-  DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-
-
 jobs:
   Pipeline:
     name: Default
@@ -20,4 +16,4 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Release
-      run: docker run -e GITHUB_TOKEN=${GIT_TOKEN} -e GITHUB_REPO=$(echo "${GITHUB_REPOSITORY}" | cut -d "/" -f2) punkerside/gh:latest
+      run: docker run -e GITHUB_TOKEN=${{ secrets.GIT_TOKEN }} -e GITHUB_REPO=$(echo "${GITHUB_REPOSITORY}" | cut -d "/" -f2) punkerside/gh:latest
