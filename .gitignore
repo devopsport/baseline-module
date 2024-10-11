@@ -7,3 +7,4 @@ passwd
 Gemfile.lock
 .script/
 .config/
+version.txt

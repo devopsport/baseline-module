@@ -15,3 +15,5 @@ then
 else
   gh release create v0.0.1 --generate-notes
 fi
+
+echo "v${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}" > version.txt
