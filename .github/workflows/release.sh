@@ -8,6 +8,9 @@ GITHUB_TAGS=$(gh release list | wc -l)
 if [ ${GITHUB_TAGS} = 0 ]
 then
   gh release create v0.0.1 --generate-notes
+  MAJOR_VERSION="0"
+  MINOR_VERSION="0"
+  PATCH_VERSION="1"
 else
   MAJOR_VERSION=$(gh release list | grep Latest | awk '{print $9 " " $1}' | cut -d "v" -f2 | cut -d "." -f1)
   MINOR_VERSION=$(gh release list | grep Latest | awk '{print $9 " " $1}' | cut -d "v" -f2 | cut -d "." -f2)
