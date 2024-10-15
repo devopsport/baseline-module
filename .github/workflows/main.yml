@@ -52,11 +52,11 @@ jobs:
           "clientSecret": "BcyJOu8lcwcQNVzkeYjZPd3KpJAlatJkjVwBKPdsqo1pPzKyeB6kBHHjVJMQ9kfI"
         }' | jq '.accessToken' | sed 's/"//g')
 
-        blueprint_id='module_repository'
+        blueprint_id='module_release'
 
         curl --location --request POST "https://api.getport.io/v1/blueprints/${blueprint_id}/entities?upsert=true" 	--header "Authorization: Bearer $access_token" 	--header "Content-Type: application/json" 	--data-raw '{
-          "identifier": "'${moduleName}'",
-          "title": "'${moduleName}'",
-          "properties": {"url":"https://github.com/devopsport/'${moduleName}'","security":"Passed","version":"'${versionRelease}'","quality":"Passed"},
-          "relations": {"organization":"icarus"}
+          "identifier": "'${moduleName}-${versionRelease}'",
+          "title": "'${moduleName}-${versionRelease}'",
+          "properties": {"version":["'${versionRelease}'"],"module_branch":"main","quality":"Passed","security":"Passed","workflow_id":"'${GITHUB_RUN_ID}'","link_to_the_ci":"https://github.com/devopsport/'${moduleName}'/actions/runs/'${GITHUB_RUN_ID}'/job/'${GITHUB_RUN_ATTEMPT}'","repository":"https://github.com/devopsport/'${moduleName}'"},
+          "relations": {"module_repository":"'${moduleName}'"}
         }'
