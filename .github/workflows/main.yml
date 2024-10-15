@@ -57,6 +57,15 @@ jobs:
         curl --location --request POST "https://api.getport.io/v1/blueprints/${blueprint_id}/entities?upsert=true" 	--header "Authorization: Bearer $access_token" 	--header "Content-Type: application/json" 	--data-raw '{
           "identifier": "'${moduleName}-${versionRelease}'",
           "title": "'${moduleName}-${versionRelease}'",
-          "properties": {"version":["'${versionRelease}'"],"module_branch":"main","quality":"Passed","security":"Passed","workflow_id":"'${GITHUB_RUN_ID}'","link_to_the_ci":"https://github.com/devopsport/'${moduleName}'/actions/runs/'${GITHUB_RUN_ID}'/job/'${GITHUB_RUN_NUMBER}'","repository":"https://github.com/devopsport/'${moduleName}'","repository_id":"'${moduleName}'"},
+          "properties": {"version":["'${versionRelease}'"],"module_branch":"main","quality":"Passed","security":"Passed","workflow_id":"'${GITHUB_RUN_ID}'","link_to_the_ci":"https://github.com/devopsport/'${moduleName}'/actions/runs/'${GITHUB_RUN_ID}'/job/'${GITHUB_RUN_NUMBER}'","repository":"https://github.com/devopsport/'${moduleName}'","repository_id":"'${moduleName}'","deprecated":false},
           "relations": {"module_repository":"'${moduleName}'"}
+        }'
+
+        blueprint_id='module_repository'
+
+        curl --location --request POST "https://api.getport.io/v1/blueprints/${blueprint_id}/entities?upsert=true" 	--header "Authorization: Bearer $access_token" 	--header "Content-Type: application/json" 	--data-raw '{
+          "identifier": "'${moduleName}'",
+          "title": "'${moduleName}'",
+          "properties": {"url":"https://github.com/devopsport/'${moduleName}'","security":true,"latest_version":["'${versionRelease}'"],"quality":true},
+          "relations": {"organization":"icarus","git_hub_team":"admin-team"}
         }'
