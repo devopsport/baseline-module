@@ -25,7 +25,7 @@ jobs:
       with:
         args: >
           -Dsonar.organization=team-devopsport
-          -Dsonar.projectKey=${{ env.PROJECT_KEY }}
+          -Dsonar.projectKey=terraform-${{ env.PROJECT_KEY }}
           -Dsonar.qualitygate.wait=true
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
