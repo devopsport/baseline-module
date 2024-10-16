@@ -19,4 +19,4 @@ else
   gh release create v${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION} --generate-notes
 fi
 
-echo "v${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}" > /tmp/version.txt
+echo "GIT_TAG=v${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}" >> $GITHUB_ENV
